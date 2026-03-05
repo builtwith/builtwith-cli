@@ -23,13 +23,13 @@ The [BuiltWith TUI](https://github.com/builtwith/builtwith-tui) is great for int
 ## 📦 Installation
 
 ```bash
-npm install -g builtwith-cli
+npm install -g builtwith-official-cli
 ```
 
 Or run directly without installing:
 
 ```bash
-npx builtwith-cli domain lookup example.com --key YOUR_KEY
+npx builtwith-official-cli domain lookup example.com --key YOUR_KEY
 ```
 
 Registers as both `bw` (short) and `builtwith` (discoverable).

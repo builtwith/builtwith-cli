@@ -1,5 +1,5 @@
 {
-  "name": "builtwith-cli",
+  "name": "builtwith-official-cli",
   "version": "1.0.0",
   "description": "Non-interactive, scriptable CLI for the BuiltWith API",
   "main": "lib/cli.js",
