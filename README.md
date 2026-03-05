@@ -1,4 +1,4 @@
-# BuiltWith CLI
+# BuiltWith CLI 🔍
 
 > Non-interactive, scriptable CLI for the [BuiltWith API](https://api.builtwith.com) — designed for automation, CI/CD pipelines, and AI agent consumption.
 
@@ -9,7 +9,7 @@ bw live feed --duration 60 > events.ndjson
 bw mcp   # start MCP server for Claude Desktop, VS Code, etc.
 ```
 
-## Why this exists
+## 🤔 Why this exists
 
 The [BuiltWith TUI](https://github.com/builtwith/builtwith-tui) is great for interactive exploration. This CLI is intentionally different:
 
@@ -20,7 +20,7 @@ The [BuiltWith TUI](https://github.com/builtwith/builtwith-tui) is great for int
 
 ---
 
-## Installation
+## 📦 Installation
 
 ```bash
 npm install -g builtwith-cli
@@ -36,7 +36,7 @@ Registers as both `bw` (short) and `builtwith` (discoverable).
 
 ---
 
-## Authentication
+## 🔑 Authentication
 
 API key is resolved in priority order:
 
@@ -62,9 +62,9 @@ cp .builtwithrc.example ~/.builtwithrc
 
 ---
 
-## Commands
+## 💻 Commands
 
-### Domain
+### 🌐 Domain
 
 ```bash
 bw domain lookup <domain> [flags]
@@ -86,7 +86,7 @@ bw domain lookup shopify.com --nopii --liveonly | jq '.Results[0].Technologies[]
 bw domain lookup shopify.com --fdrange 20240101-20241231
 ```
 
-### Lists
+### 📋 Lists
 
 ```bash
 bw lists tech <tech> [--offset <n>] [--limit <n>]
@@ -97,19 +97,19 @@ bw lists tech WordPress
 bw lists tech Shopify --limit 50 --offset 100
 ```
 
-### Relationships
+### 🔗 Relationships
 
 ```bash
 bw relationships lookup <domain>
 ```
 
-### Free
+### 🆓 Free
 
 ```bash
 bw free lookup <domain>
 ```
 
-### Company
+### 🏢 Company
 
 ```bash
 bw company find <name>
@@ -119,31 +119,31 @@ bw company find <name>
 bw company find "Shopify"
 ```
 
-### Tags
+### 🏷️ Tags
 
 ```bash
 bw tags lookup <lookup>
 ```
 
-### Recommendations
+### 💡 Recommendations
 
 ```bash
 bw recommendations lookup <domain>
 ```
 
-### Redirects
+### ↪️ Redirects
 
 ```bash
 bw redirects lookup <domain>
 ```
 
-### Keywords
+### 🔤 Keywords
 
 ```bash
 bw keywords lookup <domain>
 ```
 
-### Trends
+### 📈 Trends
 
 ```bash
 bw trends tech <tech>
@@ -153,7 +153,7 @@ bw trends tech <tech>
 bw trends tech React
 ```
 
-### Products
+### 🛍️ Products
 
 ```bash
 bw products search <query> [--page <n>] [--limit <n>]
@@ -164,20 +164,20 @@ bw products search "coffee maker"
 bw products search "running shoes" --page 2 --limit 50
 ```
 
-### Trust
+### 🛡️ Trust
 
 ```bash
 bw trust lookup <domain>
 ```
 
-### Account
+### 👤 Account
 
 ```bash
 bw account whoami
 bw account usage
 ```
 
-### Live Feed
+### 📡 Live Feed
 
 Stream live technology detection events as [NDJSON](https://jsonlines.org/), one event per line.
 
@@ -198,7 +198,7 @@ bw live feed | jq --unbuffered '.domain'
 
 ---
 
-## Global Flags
+## 🚩 Global Flags
 
 Available on every command:
 
@@ -213,7 +213,7 @@ Available on every command:
 
 ---
 
-## Output Formats
+## 🖨️ Output Formats
 
 ### JSON (default)
 
@@ -235,21 +235,21 @@ bw domain lookup example.com --format csv > results.csv
 
 ---
 
-## Exit Codes
+## 🚦 Exit Codes
 
 Scripts can use exit codes to handle different failure modes:
 
 | Code | Meaning |
 |---|---|
-| `0` | Success |
-| `1` | Unexpected error |
-| `2` | Auth failure (missing key, 401, 403) |
-| `3` | Not found (404) |
-| `4` | Rate limit (429) |
-| `5` | Other API error |
-| `6` | Network failure |
-| `7` | Invalid input |
-| `8` | Interrupted (SIGINT) |
+| `0` | ✅ Success |
+| `1` | 💥 Unexpected error |
+| `2` | 🔐 Auth failure (missing key, 401, 403) |
+| `3` | 🔍 Not found (404) |
+| `4` | ⏱️ Rate limit (429) |
+| `5` | ⚠️ Other API error |
+| `6` | 🌐 Network failure |
+| `7` | ❌ Invalid input |
+| `8` | 🛑 Interrupted (SIGINT) |
 
 ```bash
 bw domain lookup example.com
@@ -263,7 +263,7 @@ esac
 
 ---
 
-## Pipeline Examples
+## 🔧 Pipeline Examples
 
 ```bash
 # Get all live tech names for a domain
@@ -292,7 +292,7 @@ bw domain lookup mysite.com --key "$BUILTWITH_API_KEY" --quiet || exit 1
 
 ---
 
-## Dry Run & Debugging
+## 🐛 Dry Run & Debugging
 
 ```bash
 # Preview the URL that would be called (key is masked)
@@ -305,25 +305,7 @@ bw domain lookup example.com --debug
 
 ---
 
-## Development
-
-```bash
-git clone https://github.com/builtwith/builtwith-cli
-cd builtwith-cli
-npm install
-npm test        # 24 tests, node:test built-in (no extra framework)
-```
-
-```bash
-# Run without installing globally
-node bin/bw.js domain lookup example.com --key YOUR_KEY
-```
-
----
-
----
-
-## MCP Server
+## 🤖 MCP Server
 
 `bw mcp` starts a [Model Context Protocol](https://modelcontextprotocol.io) server over stdio, exposing all BuiltWith API endpoints as structured tools that any MCP-compatible client can call — Claude Desktop, VS Code, Cursor, Zed, and more.
 
@@ -333,7 +315,7 @@ bw mcp --key YOUR_API_KEY   # pass key inline instead of env/rc file
 bw mcp --debug              # log JSON-RPC traffic to stderr
 ```
 
-### Client configuration
+### ⚙️ Client configuration
 
 Add to your MCP client config (e.g. `claude_desktop_config.json`):
 
@@ -361,38 +343,54 @@ If your API key isn't in an env var or `.builtwithrc`, pass it inline:
 }
 ```
 
-### Available tools
+### 🧰 Available tools
 
 | Tool | Description |
 |---|---|
-| `domain_lookup` | Technology stack for a domain (supports `nopii`, `liveonly`, date ranges) |
-| `lists_tech` | Domains currently using a technology |
-| `relationships_lookup` | Related domains (shared infra, ownership) |
-| `free_lookup` | Free-tier category counts for a domain |
-| `company_find` | Domains associated with a company name |
-| `tags_lookup` | Domains related to an IP or tag attribute |
-| `recommendations_lookup` | Technology recommendations for a domain |
-| `redirects_lookup` | Live and historical redirect chains |
-| `keywords_lookup` | Keyword data for a domain |
-| `trends_tech` | Historical adoption trend for a technology |
-| `products_search` | Search ecommerce products across indexed stores |
-| `trust_lookup` | Trust/quality score for a domain |
-| `account_whoami` | Authenticated account identity |
-| `account_usage` | API usage statistics |
+| `domain_lookup` | 🌐 Technology stack for a domain (supports `nopii`, `liveonly`, date ranges) |
+| `lists_tech` | 📋 Domains currently using a technology |
+| `relationships_lookup` | 🔗 Related domains (shared infra, ownership) |
+| `free_lookup` | 🆓 Free-tier category counts for a domain |
+| `company_find` | 🏢 Domains associated with a company name |
+| `tags_lookup` | 🏷️ Domains related to an IP or tag attribute |
+| `recommendations_lookup` | 💡 Technology recommendations for a domain |
+| `redirects_lookup` | ↪️ Live and historical redirect chains |
+| `keywords_lookup` | 🔤 Keyword data for a domain |
+| `trends_tech` | 📈 Historical adoption trend for a technology |
+| `products_search` | 🛍️ Search ecommerce products across indexed stores |
+| `trust_lookup` | 🛡️ Trust/quality score for a domain |
+| `account_whoami` | 👤 Authenticated account identity |
+| `account_usage` | 📊 API usage statistics |
 
-### Implementation note
+### 🔬 Implementation note
 
 The MCP server is implemented as a pure JSON-RPC 2.0 stdio server with no additional dependencies — auth, HTTP calls, and error handling all use the same code paths as the regular CLI commands.
 
 ---
 
-## Related
+## 🛠️ Development
+
+```bash
+git clone https://github.com/builtwith/builtwith-cli
+cd builtwith-cli
+npm install
+npm test        # 24 tests, node:test built-in (no extra framework)
+```
+
+```bash
+# Run without installing globally
+node bin/bw.js domain lookup example.com --key YOUR_KEY
+```
+
+---
+
+## 🔗 Related
 
 - [BuiltWith TUI](https://github.com/builtwith/builtwith-tui) — interactive terminal UI for the BuiltWith API
 - [BuiltWith API Docs](https://api.builtwith.com) — full API reference
 
 ---
 
-## License
+## 📄 License
 
 MIT
