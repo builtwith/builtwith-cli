@@ -170,6 +170,17 @@ bw products search "running shoes" --page 2 --limit 50
 bw trust lookup <domain>
 ```
 
+### 🔎 Vector Search
+
+```bash
+bw vector search <query> [--limit <n>]
+```
+
+```bash
+bw vector search "react framework"
+bw vector search "ecommerce platform" --limit 20
+```
+
 ### 👤 Account
 
 ```bash
@@ -359,6 +370,7 @@ If your API key isn't in an env var or `.builtwithrc`, pass it inline:
 | `trends_tech` | 📈 Historical adoption trend for a technology |
 | `products_search` | 🛍️ Search ecommerce products across indexed stores |
 | `trust_lookup` | 🛡️ Trust/quality score for a domain |
+| `vector_search` | 🔎 Semantic search across technologies and categories |
 | `account_whoami` | 👤 Authenticated account identity |
 | `account_usage` | 📊 API usage statistics |
 
